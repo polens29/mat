@@ -12,8 +12,7 @@ import {
   pageRangeDisplay,
 } from 'utils/helper';
 
-
-import { Pagination, Tooltip, Button, Modal } from 'antd';
+import { Pagination, Tooltip, Button, Modal,Select } from 'antd';
 
 const pageSize = 50;
 
@@ -25,18 +24,50 @@ class Footer extends React.PureComponent {
     updateSearchParams('page', page);
   };
 
+  handleChange = (value) => {
+    this.props.updateSearchParams('limit', parseInt(value));
+  }
+
   render() {
     const { total, searchParams, loading, category } = this.props;
 
     const pageRangeStart = getPageRangeStart(searchParams.page, pageSize);
     const pageRangeEnd = getPageRangeEnd(searchParams.page, pageSize, total);
+    let pageTotal = total/searchParams.limit;
+    if(pageTotal % 1 != 0){
+      pageTotal = pageTotal + 1;
+      pageTotal = Math.trunc(pageTotal)
+    }
 
     return (
       <FooterWrapper>
         
           {
             !loading && (
-              <div style={{"float":"right"}}>
+              <div>
+                <Pagination
+                  size={'large'}
+                  defaultCurrent={total > 0 ? searchParams.page : 0}
+                  onChange={this.onChangePage}
+                  pageSize={searchParams.limit}
+                  total={total}
+                />
+                <div className="numpages">
+                  {total} items, {pageTotal} pages
+                </div>
+                <Select defaultValue={searchParams.limit} onChange={this.handleChange}>
+                  <Option value="10">10</Option>
+                  <Option value="20">20</Option>
+                  <Option value="30">30</Option>
+                  <Option value="40">40</Option>
+                  <Option value="50">50</Option>
+                  <Option value="60">60</Option>
+                  <Option value="70">70</Option>
+                  <Option value="80">80</Option>
+                  <Option value="90">90</Option>
+                  <Option value="100">100</Option>
+                </Select>
+
                 {/*
                 <div className="inline" style={{ verticalAlign: 'super' }}>
                   <label
@@ -65,7 +96,6 @@ class Footer extends React.PureComponent {
                   />
                 </div>
                 */}
-                Unique Organizations
               </div>
             )
           }

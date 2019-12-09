@@ -429,6 +429,8 @@ const {keywords}=this.props;
         />
 
         <ContactTable showInfoModal={this.showModal} selectedRows={this.state.selectedRows} handleShowListDropDown={this.handleShowListDropDown} checkedKeys={this.state.checkedKeys} {...this.props} listUpdated={this.state.listUpdated} handleListUpdated={this.handleListUpdated.bind(this)} />
+
+        <Footer {...this.props}/>
       </div>
     );
   }
