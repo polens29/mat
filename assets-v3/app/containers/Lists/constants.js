@@ -1,0 +1,20 @@
+export const GET_LB_LISTS = 'app/Lists/GET_LB_LISTS';
+export const GET_LB_LISTS_SUCCESS = 'app/Lists/GET_LB_LISTS_SUCCESS';
+export const CREATE_LB_LISTS = 'app/Lists/CREATE_LB_LISTS';
+export const CREATE_LB_LISTS_SUCCESS = 'app/Lists/CREATE_LB_LISTS_SUCCESS';
+export const ADD_TO_LB_LISTS = 'app/Lists/ADD_TO_LB_LISTS';
+export const ADD_TO_LB_LISTS_SUCCESS = 'app/Lists/ADD_TO_LB_LISTS_SUCCESS';
+export const REMOVE_FROM_LB_LISTS = 'app/Lists/REMOVE_FROM_LB_LISTS';
+export const REMOVE_FROM_LB_LISTS_SUCCESS =
+  'app/Lists/REMOVE_FROM_LB_LISTS_SUCCESS';
+export const FILTER_LIST = 'app/Lists/FILTER_LIST';
+export const DELETE_LIST = 'app/Lists/DELETE_LIST';
+export const DELETE_LIST_SUCCESS = 'app/Lists/DELETE_LIST_SUCCESS';
+export const COPY_LIST = 'app/Lists/COPY_LIST';
+export const COPY_LIST_SUCCESS = 'app/Lists/COPY_LIST_SUCCESS';
+export const RENAME_LIST = 'app/Lists/RENAME_LIST';
+export const RENAME_LIST_SUCCESS = 'app/Lists/RENAME_LIST_SUCCESS';
+export const PROGRESS_BAR_START = 'app/Lists/PROGRESS_BAR_START';
+export const PROGRESS_BAR_UPDATE = 'app/Lists/PROGRESS_BAR_UPDATE';
+export const PURCHASE_LIST = 'app/HomePage/PURCHASE_LIST';
+export const PURCHASE_LIST_SUCCESS = 'app/HomePage/PURCHASE_LIST_SUCCESS';
