@@ -19,6 +19,7 @@ import FreshdeskWidget from '@personare/react-freshdesk-widget';
 import ContactTable from 'components/ContactTable';
 import ContactOptions from 'components/ContactOptions';
 import Footer from 'components/Footer';
+import MapLanding from 'components/MapLanding';
 
 import {
   makeSelectLBLists,
@@ -159,7 +160,8 @@ export class HomePage extends React.PureComponent {
       showListsModal: false,
       checkedKeys: [],
       listUpdated: false,
-      listCreated: false
+      listCreated: false,
+      showMap: true
     };
   }
 
@@ -324,6 +326,12 @@ export class HomePage extends React.PureComponent {
     })
   }
 
+  toggleMap(){
+    this.setState({
+      showMap: !this.state.showMap
+    })
+  }
+
   render() {
     
 const {keywords}=this.props;
@@ -403,34 +411,48 @@ const {keywords}=this.props;
           </p>
           <Progress percent={this.props.progressUnlcok} />
         </Modal>
-        <Search
-          {...this.props}
-          updateCampaignParams={this.updateCampaignParams}
-          updateSavedSearchParams={this.updateSavedSearchParams}
-          showManageListsModal={this.showManageListsModal.bind(this)}
-          listModalVisible={this.state.showListsModal}
-          listCreated={this.state.listCreated}
-          handleListCreated={this.handleListCreated.bind(this)}
-        />
-        <ContactOptions
-          showInfoModal={this.showModal}
-          visibleSize={this.state.visibleSize}
-          handleHideListDropDown={this.handleHideListDropDown}
-          handleShowListDropDown={this.handleShowListDropDown}
-          {...this.props}
-          showManageListsModal={this.showManageListsModal.bind(this)}
-          listModalVisible={this.state.showListsModal}
-          checkedKeys={this.state.checkedKeys}
-          setCheckedKeys={this.setCheckedKeys.bind(this)}
-          listUpdated={this.state.listUpdated}
-          handleListUpdated={this.handleListUpdated.bind(this)}
-          listCreated={this.state.listCreated}
-          handleListCreated={this.handleListCreated.bind(this)}
-        />
 
-        <ContactTable showInfoModal={this.showModal} selectedRows={this.state.selectedRows} handleShowListDropDown={this.handleShowListDropDown} checkedKeys={this.state.checkedKeys} {...this.props} listUpdated={this.state.listUpdated} handleListUpdated={this.handleListUpdated.bind(this)} />
+        {
+          !this.state.showMap && (
+            <div>
+              <Search
+                {...this.props}
+                updateCampaignParams={this.updateCampaignParams}
+                updateSavedSearchParams={this.updateSavedSearchParams}
+                showManageListsModal={this.showManageListsModal.bind(this)}
+                listModalVisible={this.state.showListsModal}
+                listCreated={this.state.listCreated}
+                handleListCreated={this.handleListCreated.bind(this)}
+              />
+              <ContactOptions
+                showInfoModal={this.showModal}
+                visibleSize={this.state.visibleSize}
+                handleHideListDropDown={this.handleHideListDropDown}
+                handleShowListDropDown={this.handleShowListDropDown}
+                {...this.props}
+                showManageListsModal={this.showManageListsModal.bind(this)}
+                listModalVisible={this.state.showListsModal}
+                checkedKeys={this.state.checkedKeys}
+                setCheckedKeys={this.setCheckedKeys.bind(this)}
+                listUpdated={this.state.listUpdated}
+                handleListUpdated={this.handleListUpdated.bind(this)}
+                listCreated={this.state.listCreated}
+                handleListCreated={this.handleListCreated.bind(this)}
+              />
 
-        <Footer {...this.props}/>
+              <ContactTable showInfoModal={this.showModal} selectedRows={this.state.selectedRows} handleShowListDropDown={this.handleShowListDropDown} checkedKeys={this.state.checkedKeys} {...this.props} listUpdated={this.state.listUpdated} handleListUpdated={this.handleListUpdated.bind(this)} />
+
+              <Footer {...this.props}/>
+            </div>
+          )
+        }
+        {
+          this.state.showMap && (
+            <MapLanding toggleMap={this.toggleMap.bind(this)}/>
+          )
+        }
+
+          
       </div>
     );
   }
