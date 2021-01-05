@@ -212,7 +212,7 @@
   "dependencies": {
     "@personare/react-freshdesk-widget": "^0.2.4",
     "antd": "^3.8.4",
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "babel-polyfill": "6.20.0",
     "bootstrap": "^3.3.7",
     "chalk": "^1.1.3",
