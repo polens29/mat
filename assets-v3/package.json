@@ -255,7 +255,7 @@
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
     "styled-components": "1.1.2",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "universal-cookie": "^2.1.0",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.1"
